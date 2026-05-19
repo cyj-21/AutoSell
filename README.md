@@ -1,16 +1,39 @@
-# auto_NTE
+# AutoSell
+
+异环「店长特供」自动循环简易脚本。
+
+## 前置要求
+
+- 都市大亨 16级 以上 （推荐）
+- 激活角色「早雾」都市技能Lv.3 （必要）
+- 解锁到关卡 1-9 （必要）
+- 角色需要站在店铺前台附近，即出现 `F` 进入店长特供选项 （必要）
+- 以管理员权限打开 Anaconda Prompt （必要）
+
+## 安装依赖
+
+```powershell
+..\\python.exe -m pip install -r requirements.txt
+```
+
+## 运行方式
+
+```powershell
+..\\python.exe auto_nte_loop.py 现有体力 需要保留体力
+```
+
+示例：
+
+```powershell
+..\\python.exe auto_nte_loop.py 700 460
+表示现有 700 点都市活力，执行完脚本后还剩 460 点都市活力 （12点一轮）
+```
 
 
-The two numbers are current energy and energy to keep. Rounds are calculated as `(current - keep) // 12`.
+## 注意事项
 
-Flow: press `F` -> wait `begin` button area -> click start -> wait 50s -> click top-left exit area -> wait `finish` claim area -> click claim -> wait 3s.
-
-Runtime screenshots are saved to `screenshout`. Move the mouse to the top-left corner to stop.
-
-Keyboard and mouse input uses `pydirectinput`; screenshots still use `pyautogui`.
-
-The script only checks small button regions. Existing full-screen `baseline/begin.png` and `baseline/finish.png` still work; the script crops them automatically.
-
-You can also run without arguments and enter the two values when prompted:
-
+- 脚本开始后有 3 秒倒计时，请在这段时间点击游戏窗口，让游戏获得焦点。
+- 紧急停止：把鼠标移动到屏幕左上角。
+- 如果点击位置偏移，优先检查游戏分辨率是否和 baseline 截图一致，默认2k。
+- 如果按键或点击仍无效，确认游戏和 Anaconda Prompt 的权限级别一致。
 
