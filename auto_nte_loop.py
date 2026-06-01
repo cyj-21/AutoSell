@@ -15,15 +15,15 @@ SCREENSHOTS = ROOT / "screenshout"
 START_POS = (2300 / 2560, 1310 / 1440)
 CLAIM_POS = (1545 / 2560, 1120 / 1440)
 EXIT_POS = (70 / 2560, 70 / 1440)
+LEVEL_POS = (230 / 2560, 1110 / 1440)
 BEGIN_REGION = (2100 / 2560, 1240 / 1440, 380 / 2560, 130 / 1440)
 FINISH_REGION = (1320 / 2560, 1060 / 1440, 460 / 2560, 140 / 1440)
 ENERGY_PER_ROUND = 12
 THRESHOLD = 0.72
 TIMEOUT = 30
 INTERVAL = 1
-STAGE_SECONDS = 50
+STAGE_SECONDS = 53
 ROUND_WAIT = 3
-KEY_HOLD_SECONDS = 0.15
 
 
 def rect(size, region):
@@ -73,12 +73,6 @@ def click_pos(pos):
     pydirectinput.click(round(w * pos[0]), round(h * pos[1]))
 
 
-def press_key(key):
-    pydirectinput.keyDown(key)
-    time.sleep(KEY_HOLD_SECONDS)
-    pydirectinput.keyUp(key)
-
-
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("energy", nargs="?", type=int, help="current energy")
@@ -109,7 +103,7 @@ def main():
 
     for i in range(loops):
         print(f"round {i + 1}/{loops}")
-        press_key("f")
+        click_pos(LEVEL_POS)
         wait_page("begin", baselines["begin"], regions["begin"], THRESHOLD, TIMEOUT, INTERVAL)
         click_pos(START_POS)
         time.sleep(STAGE_SECONDS)
